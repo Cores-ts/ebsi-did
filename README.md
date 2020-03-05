@@ -1,29 +1,21 @@
 
+![EBSI Logo](https://ec.europa.eu/cefdigital/wiki/images/logo/default-space-logo.svg)
 
-[![npm](https://img.shields.io/npm/dt/ethr-did.svg)](https://www.npmjs.com/package/ethr-did)
-[![npm](https://img.shields.io/npm/v/ethr-did.svg)](https://www.npmjs.com/package/ethr-did)
-[![Join the chat at](https://img.shields.io/badge/Riot-Join%20chat-green.svg)](https://chat.uport.me/#/login)
-[![Twitter Follow](https://img.shields.io/twitter/follow/uport_me.svg?style=social&label=Follow)](https://twitter.com/uport_me)
+# EBSI DID Library
 
-# Ebsi-DID Library
-
-[DID Specification](https://w3c-ccg.github.io/did-spec/) | [ERC-1056](https://github.com/ethereum/EIPs/issues/1056) | [Getting Started](/docs/guides/index.md)
-
-[FAQ and helpdesk support](http://bit.ly/uPort_helpdesk)
-
-This library conforms to [ERC-1056](https://github.com/ethereum/EIPs/issues/1056) and is intended to use Ethereum addresses as fully self-managed [Decentralized Identifiers](https://w3c-ccg.github.io/did-spec/#decentralized-identifiers-dids) (DIDs), it allows you to easily create and manage keys for these identities.  It also lets you sign standards compliant [JSON Web Tokens (JWT)](https://jwt.io) that can be consumed using the [DID-JWT](https://github.com/uport-project/did-jwt) library.
+This library conforms to [ERC-1056](https://github.com/ethereum/EIPs/issues/1056) and is intended to use Ethereum addresses as fully self-managed [Decentralized Identifiers](https://w3c-ccg.github.io/did-spec/#decentralized-identifiers-dids) (DIDs), it allows you to easily create and manage keys for these identities.  
 
 This library can be used to create a new ebsi-did identity.  It allows ebsi-did identities to be represented as an object that can perform actions such as updating its did-document, signing messages, and verifying messages from other dids.
 
-Use this if you are looking for the easiest way to start using ebsi-did identities, and want high-level abstractions to access its entire range of capabilities.  It encapsulates all the functionality of [ebsi-did-resolver](https://github.com/decentralized-identity/ebsi-did-resolver) and [ethr-did-registry](https://github.com/uport-project/ethr-did-registry).
+Use this if you are looking for the easiest way to start using ebsi-did identities, and want high-level abstractions to access its entire range of capabilities.
 
 A DID is an Identifier that allows you to lookup a DID document that can be used to authenticate you and messages created by you.
 
-Ebsi-DID provides a scalable identity method for Ethereum addresses that gives any Ethereum address the ability to collect on-chain and off-chain data. Because Ebsi-DID allows any Ethereum key pair to become an identity, it is more scalable and privacy-preserving than smart contract based identity methods, like our previous [Proxy Contract](https://github.com/uport-project/uport-identity/blob/develop/docs/reference/proxy.md).
+Ebsi-DID provides a scalable identity method for Ethereum addresses that gives any Ethereum address the ability to collect on-chain and off-chain data. Because Ebsi-DID allows any BESU key pair to become an identity.
 
-This particular DID method relies on the [Ethr-Did-Registry](https://github.com/uport-project/ethr-did-registry). The Ethr-DID-Registry is a smart contract that facilitates public key resolution for off-chain (and on-chain) authentication. It also facilitates key rotation, delegate assignment and revocation to allow 3rd party signers on a key's behalf, as well as setting and revoking off-chain attribute data. These interactions and events are used in aggregate to form a DID's DID document using the [Ebsi-Did-Resolver](https://github.com/validatedid/ebsi-did-resolver).
+This particular DID method relies on the [Ethr-Did-Registry](https://github.com/uport-project/ethr-did-registry). The Ethr-DID-Registry is a smart contract that facilitates public key resolution for off-chain (and on-chain) authentication. It also facilitates key rotation, delegate assignment and revocation to allow 3rd party signers on a key's behalf, as well as setting and revoking off-chain attribute data. These interactions and events are used in aggregate to form a DID's DID document using the Ebsi-Did-Resolver.
 
-An example of a DID document resolved using the Ethr-Did-Resolver:
+An example of a DID document resolved using the EBSI-Did-Resolver:
 
 ```
 {
@@ -47,9 +39,9 @@ It supports the proposed [Decentralized Identifiers](https://w3c-ccg.github.io/d
 
 ## DID Method
 
-A "DID method" is a specific implementation of a DID scheme that is identified by a `method name`. In this case, the method name is `ethr`, and the method identifier is an Ethereum address.
+A "DID method" is a specific implementation of a DID scheme that is identified by a `method name`. In this case, the method name is `ebsi`, and the method identifier is an BESU address.
 
-To encode a DID for an Ethereum address, simply prepend `did:ethr:`
+To encode a DID for an BESU address, simply prepend `did:ebsi:`
 
 
 For example:
@@ -59,7 +51,7 @@ For example:
 ## Configuration
 
 ```js
-import EthrDID from 'ebsi-did'
+import EbsiDID from 'ebsi-did'
 
 // Assume web3 object is configured either manually or injected using metamask
 
@@ -85,3 +77,13 @@ This instance will not have the ability to sign anything, but it can be used for
 *  provide the full DID string (`ebsiDid.did`)
 *  lookup its owner `await ebsiDid.lookupOwner()`
 *  verify a JWT `await ebsiDid.verifyJwt(jwt)`
+
+## Licensing
+
+Copyright (c) 2019 European Commission  
+Licensed under the EUPL, Version 1.2 or - as soon they will be approved by the European Commission - subsequent versions of the EUPL (the "Licence"); 
+You may not use this work except in compliance with the Licence. 
+You may obtain a copy of the Licence at: 
+* https://joinup.ec.europa.eu/page/eupl-text-11-12  
+
+Unless required by applicable law or agreed to in writing, software distributed under the Licence is distributed on an "AS IS" basis, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the Licence for the specific language governing permissions and limitations under the Licence.
